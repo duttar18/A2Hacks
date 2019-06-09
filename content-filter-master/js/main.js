@@ -236,15 +236,6 @@ $(function () {
     });
 });
 
-function myFunction() {
-  var x = document.getElementsById("switch-front");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
 
 // Initialize and add the map
 function initMap() {
@@ -256,3 +247,11 @@ function initMap() {
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
 }
+
+function change_page1(){
+  window.location.href = "index.html";
+} 
+
+function change_page2(){
+  window.location.href = "index2.html";
+} 
