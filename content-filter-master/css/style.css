@@ -690,3 +690,23 @@ input[type="date"]:valid:before {
   #map #infowindow-content {
     display: inline;
   }
+
+
+h6{
+    align-content: top center;
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    background-color: white
+}
+
+p{
+  display: block;
+  align-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: white;
+    text-align: justify;
+}
