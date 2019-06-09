@@ -23,21 +23,13 @@
 					<li class="placeholder"> 
 						<a data-type="all" href="#0">Lits</a> <!-- selected option on mobile -->
 					</li> 
-					<li class="filter" onclick="myFunction()"><a class="selected" href="#0" data-type="all">List</a></li>
-					<li id="action" data-filter=".map_show" onclick="myFunction()"><a href="#0" data-type="map_show">Map</a></li>
+					<li type="button" value="create page" onclick="change_page1()" id="myButton2" class="filter" ><a class="selected" data-type="all">List</a></li>
+					<li type="button" value="create page" onclick="change_page2()" id="myButton" data-filter=".map_show"><a  data-type="map_show">Map</a></li>
+                    
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
-        
-
-		<section class="cd-gallery">
-            <div id="map"></div>
-            <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=[KEY]&callback=initMap">
-            </script>
-			<div class="cd-fail-message">Map not loading</div>
-		</section>
-
+     
 		<section class="cd-gallery">
 			<ul>
 				<li class="mix color-1 check1 radio2 option3"><img src="img/img-1.jpg" alt="Image 1"></li>
