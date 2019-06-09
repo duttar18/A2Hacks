@@ -1,0 +1,28 @@
+
+/usr/lib/python3/dist-packages/requests/__init__.py:80: RequestsDependencyWarning: urllib3 (1.25.3) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+scraping
+Traceback (most recent call last):
+  File "rescrape.py", line 7, in <module>
+    schedule.every().day.at("05:40").do(scraper.scrape())
+  File "/mnt/c/Users/Raul Dutta/Documents/Projects/a2hacks/scraper.py", line 29, in scrape
+    data[time.split(" ")[0]].append(
+TypeError: list indices must be integers or slices, not str
+/usr/lib/python3/dist-packages/requests/__init__.py:80: RequestsDependencyWarning: urllib3 (1.25.3) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+scraping
+Traceback (most recent call last):
+  File "rescrape.py", line 7, in <module>
+    schedule.every().day.at("05:41").do(scraper.scrape())
+  File "/mnt/c/Users/Raul Dutta/Documents/Projects/a2hacks/scraper.py", line 29, in scrape
+    data[time.split(" ")[0]].append(
+KeyError: '2019-06-01'
+/usr/lib/python3/dist-packages/requests/__init__.py:80: RequestsDependencyWarning: urllib3 (1.25.3) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+scraping
+Traceback (most recent call last):
+  File "rescrape.py", line 7, in <module>
+    schedule.every().day.at("05:43").do(scraper.scrape())
+  File "/home/duttar/.local/lib/python3.6/site-packages/schedule/__init__.py", line 440, in do
+    self.job_func = functools.partial(job_func, *args, **kwargs)
+TypeError: the first argument must be callable

@@ -8,7 +8,6 @@ import requests, json
 from operator import itemgetter
 import cherrypy
 
-import datetime
 
 import scraper
 
@@ -20,20 +19,13 @@ class Aggregator(object):
         custom = customString.split(",")
         
         
-        with open('date.json', 'r') as timeFile:
-            timeReader=timeFile.read()
-        tim = json.loads(timeReader)
 
-        if(tim!=datetime.datetime.today().day):
-            scraper.scrape(year,month,day)
-            print(tim)
-            print(datetime.datetime.today().day)
-
-        # read file
         with open('data_file.json', 'r') as dataFile:
             dataReader=dataFile.read()
 
-        data = json.loads(dataReader)
+        dataAllDays = json.loads(dataReader)
+
+        data=dataAllDays[year+"-"+month+"-"+day]
 
         for x in data:
             imp  = 0
