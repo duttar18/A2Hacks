@@ -246,20 +246,35 @@ function change_page2(index){
 
 function initMap() {
   var aa = {lat: 42.2808, lng: -83.7430};
-  var map = new google.maps.Map(document.getElementById('map'), {zoom: 10, center: aa});
-  //var marker = new google.maps.Marker({position: aa, map: map, icon: {url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"}});
-  var geocoder = new google.maps.Geocoder();
+  var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: aa});
 
   document.getElementById('load').addEventListener('click', function() {
-      
-      placeMarkers(geocoder, map);
+      placeMarkers(map);
   });
-    document.getElementById('load').click()
+	document.getElementById('load').click();
 }
 
-function placeMarkers(geocoder, resultsMap) {
-  var response = $.getJSON("https://api.myjson.com/bins/18v0ip", function(my_data) {
-      console.log(my_data)
+function placeMarkers(resultsMap) {
+  var url = "https://calm-wave-48946.herokuapp.com/getData?";
+  var date = String(document.getElementById('start_date').value);
+  var keywords = String(document.getElementById('keywords').value);
+  var added_date = false;
+
+  var url = "";
+  if (date.length > 0){
+      //url = url + "year=" + date.substr(0,4)+"&month="+date.substr(5,2)+"&day="+date.substr(8,2);
+      added_date = true;
+  }
+
+    if (added_date){
+        //url = url + "&";
+        url = "https://api.myjson.com/bins/16bijd";
+      }
+      //url = url + "customString=" + keywords;  
+    else{
+        url = "https://api.myjson.com/bins/1fpb15";
+    }
+  var response = $.getJSON(url, function(my_data) {
         var markers = []
         var contents = []
         var epsilon = 1e-6
