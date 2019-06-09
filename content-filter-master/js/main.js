@@ -254,4 +254,71 @@ function change_page1(){
 
 function change_page2(){
   window.location.href = "index2.html";
-} 
+}
+
+function initMap() {
+  var aa = {lat: 42.2808, lng: -83.7430};
+  var map = new google.maps.Map(document.getElementById('map'), {zoom: 10, center: aa});
+  //var marker = new google.maps.Marker({position: aa, map: map, icon: {url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"}});
+  var geocoder = new google.maps.Geocoder();
+
+  document.getElementById('load').addEventListener('click', function() {
+      placeMarkers(geocoder, map);
+  });
+}
+
+function placeMarkers(geocoder, resultsMap) {
+  var response = $.getJSON("https://api.myjson.com/bins/18v0ip", function(my_data) {
+        var markers = []
+        var contents = []
+        var epsilon = 1e-6
+        for (var i = 0; i < my_data.length; i++) {
+            var curr_cords = my_data[i].coords;
+            if (curr_cords === " "){
+                continue;
+            }
+
+            var lat = curr_cords.lat
+            var lng = curr_cords.lng
+            var no_match = true;  
+            for (var j = 0; j < markers.length; j++){
+                var marker_pos = markers[j].getPosition();
+                var lat_diff = Math.abs(lat - marker_pos.lat());
+                var lng_diff = Math.abs(lng - marker_pos.lng());
+
+                if (lat_diff < epsilon && lng_diff < epsilon){
+                    no_match = false;
+                    google.maps.event.clearInstanceListeners(markers[j]);
+                    contents[j].push(my_data[i].Title);
+                    var content = "<p>" + contents[j][0]
+                    for (k = 1; k < contents[j].length; k++){
+                        content += "<br />" + contents[j][k];
+                    }
+                    content += "</p>"
+                    attachSecretMessage(markers[j], content);
+                }
+            }
+            if (no_match){
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: curr_cords
+                });
+                attachSecretMessage(marker, my_data[i].Title);
+                contents.push([my_data[i].Title]);
+                markers.push(marker);
+
+            }
+        }
+        console.log(markers.length);
+  });
+}
+
+function attachSecretMessage(marker, secretMessage) {
+var infowindow = new google.maps.InfoWindow({
+  content: secretMessage
+});
+
+marker.addListener('click', function() {
+  infowindow.open(marker.get('map'), marker);
+});
+}
