@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
   	
-	<title>Events| Michigan</title>
+	<title>Events | Michigan</title>
 </head>
 <body>
 	<header class="cd-header">
@@ -21,33 +21,19 @@
 			<div class="cd-tab-filter">
 				<ul class="cd-filters">
 					<li class="placeholder"> 
-						<a data-type="all" href="#0">Lits</a> <!-- selected option on mobile -->
+						<a data-type="all" href="#0">Lists</a> <!-- selected option on mobile -->
 					</li> 
-					<li type="button" value="create page" onclick="change_page1()" id="myButton2" class="filter" ><a class="selected" data-type="all">List</a></li>
-					<li type="button" value="create page" onclick="change_page2()" id="myButton" data-filter=".map_show"><a  data-type="map_show">Map</a></li>
+					<li type="button" value="create page" onclick="change_page1(null)" id="myButton2" class="filter" ><a class="selected" data-type="all">List</a></li>
+					<li type="button" value="create page" onclick="change_page2(null)" id="myButton" data-filter=".map_show"><a  data-type="map_show">Map</a></li>
                     
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
      
 		<section class="cd-gallery">
-			<ul>
-				<li class="mix color-1 check1 radio2 option3"><img src="img/img-1.jpg" alt="Image 1"></li>
-				<li class="mix color-2 check2 radio2 option2"><img src="img/img-2.jpg" alt="Image 2"></li>
-				<li class="mix color-1 check3 radio3 option1"><img src="img/img-3.jpg" alt="Image 3"></li>
-				<li class="mix color-1 check3 radio2 option4"><img src="img/img-4.jpg" alt="Image 4"></li>
-				<li class="mix color-1 check1 radio3 option2"><img src="img/img-5.jpg" alt="Image 5"></li>
-				<li class="mix color-2 check2 radio3 option3"><img src="img/img-6.jpg" alt="Image 6"></li>
-				<li class="mix color-2 check2 radio2 option1"><img src="img/img-7.jpg" alt="Image 7"></li>
-				<li class="mix color-1 check1 radio3 option4"><img src="img/img-8.jpg" alt="Image 8"></li>
-				<li class="mix color-2 check1 radio2 option3"><img src="img/img-9.jpg" alt="Image 9"></li>
-				<li class="mix color-1 check3 radio2 option4"><img src="img/img-10.jpg" alt="Image 10"></li>
-				<li class="mix color-1 check3 radio3 option2"><img src="img/img-11.jpg" alt="Image 11"></li>
-				<li class="mix color-2 check1 radio3 option1"><img src="img/img-12.jpg" alt="Image 12"></li>
-				<li class="gap"></li>
-				<li class="gap"></li>
-				<li class="gap"></li>
-			</ul>
+            <ul>
+                
+            </ul>
 			<div class="cd-fail-message">No results found</div>
 		</section> <!-- cd-gallery -->
 
@@ -60,14 +46,7 @@
                         <div class="form-row show-inputbtns">
                             <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="From">
                         </div>
-					</div> <!-- cd-filter-content -->
-                    <br>
-					<div class="cd-filter-content">
-                        <div class="form-row show-inputbtns">
-                            <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="To" >
-                        </div>
-<!--						<input type="search" placeholder="Until">-->
-					</div> <!-- cd-filter-content -->                    
+					</div> <!-- cd-filter-content -->                   
 				</div> <!-- cd-filter-block -->
                 
 				<div class="cd-filter-block">
@@ -78,27 +57,37 @@
 					</div> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 
-				<div class="cd-filter-block">
+								<div class="cd-filter-block">
 					<h4>Event Type</h4>
 
 					<ul class="cd-filter-content cd-filters list">
 						<li>
-							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
-			    			<label class="checkbox-label" for="checkbox1">Option 1</label>
+							<input class="filter" data-filter=".Exhibition" type="checkbox" id="checkbox1">
+			    			<label class="checkbox-label" for="checkbox1">Exhibition</label>
 						</li>
 
 						<li>
-							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-							<label class="checkbox-label" for="checkbox2">Option 2</label>
+							<input class="filter" data-filter=".Presentation" type="checkbox" id="checkbox2">
+							<label class="checkbox-label" for="checkbox2">Presentation</label>
 						</li>
 
 						<li>
-							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3">
-							<label class="checkbox-label" for="checkbox3">Option 3</label>
+							<input class="filter" data-filter=".Performance" type="checkbox" id="checkbox3">
+							<label class="checkbox-label" for="checkbox3">Performance</label>
 						</li>
+                        
+    				    <li>
+							<input class="filter" data-filter=".Meeting" type="checkbox" id="checkbox3">
+							<label class="checkbox-label" for="checkbox3">Meeting</label>
+						</li>
+                                            
+						<li>
+							<input class="filter" data-filter=".Other" type="checkbox" id="checkbox3">
+							<label class="checkbox-label" for="checkbox3">Other</label>
+						</li>
+                                                
 					</ul> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
-
 			<div class="cd-filter-block">
 					<h4>Distance</h4>
 					
@@ -115,7 +104,11 @@
 						</div>  
 					</div> 
 				</div> 
-
+                
+			<div class="cd-filter-block">
+                <input class="filter" id="load" type="button" value="Apply">
+            </div> 
+                
 			</form>
 
 			<a href="#0" class="cd-close">Close</a>
@@ -123,8 +116,10 @@
 
 		<a href="#0" class="cd-filter-trigger">Filters</a>
 	</main> <!-- cd-main-content -->
+    
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/jquery.mixitup.min.js"></script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->
+<script>makelist()</script>
 </body>
 </html>
