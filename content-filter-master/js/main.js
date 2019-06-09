@@ -236,24 +236,12 @@ $(function () {
     });
 });
 
-
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-
 function change_page1(){
   window.location.href = "index.html";
 } 
 
-function change_page2(){
-  window.location.href = "index2.html";
+function change_page2(index){
+  window.location.href = "index2.html?index="+index;
 }
 
 function initMap() {
@@ -263,12 +251,15 @@ function initMap() {
   var geocoder = new google.maps.Geocoder();
 
   document.getElementById('load').addEventListener('click', function() {
+      
       placeMarkers(geocoder, map);
   });
+    document.getElementById('load').click()
 }
 
 function placeMarkers(geocoder, resultsMap) {
   var response = $.getJSON("https://api.myjson.com/bins/18v0ip", function(my_data) {
+      console.log(my_data)
         var markers = []
         var contents = []
         var epsilon = 1e-6
@@ -322,3 +313,41 @@ marker.addListener('click', function() {
   infowindow.open(marker.get('map'), marker);
 });
 }
+
+function loadindex(){
+    var index = new URLSearchParams(window.location.search).get('index')
+    var aa = {lat: 42.2808, lng: -83.7430};
+    console.log(index)
+    if (index !== null){
+        initMap()
+    }
+}
+
+function onClickItem(data, index){
+    change_page2(index)
+}
+
+function makelist() {
+  var response = $.getJSON("https://api.myjson.com/bins/18v0ip", function(my_data) {
+     my_data.forEach(function(item, index){
+         var title = item.Title
+         var description = item.Desc 
+         var type = item.Type 
+         var location = item.Loc
+         var time = item.Time 
+         
+         var $ele = $("<li class='mix "+type+" "+time+" ' ><h6>"+title+"</h6><p>"+description+"</p></li>")
+        
+         $ele.on('click', function(){
+             onClickItem(item, index)
+            }
+        )
+         
+         console.log($ele)
+         
+         $('.cd-gallery ul').append($ele)
+     })
+  })
+}
+
+$( document ).ready( makelist );
