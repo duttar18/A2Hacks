@@ -41,8 +41,8 @@ for card in cards:
          'Time': dt.strftime("%Y-%m-%d %H:%M"),
          }
     )
-json = json.dumps(data);
-files = open("AAData.json", "w");
-files.write(json);
+json = json.dumps(data)
+files = open("AAData.json", "w")
+files.write(json)
 
 
